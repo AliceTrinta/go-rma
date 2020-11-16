@@ -1,5 +1,5 @@
 # GO-RMA
-> The Go Version of the Resource Maanagement Layer.
+> The Go Version of the Resource Management Layer.
 
 [![Generic badge](https://img.shields.io/badge/Version-0.0.4-<COLOR>.svg)](https://shields.io/)
 [![made-with-Go](https://img.shields.io/badge/Made%20with-Go-1f425f.svg)](http://golang.org)
