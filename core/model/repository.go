@@ -1,4 +1,4 @@
-package services
+package model
 
 func (m *MongoDB) GetDeviceByID(id string) (Device, error) {
 	var device Device

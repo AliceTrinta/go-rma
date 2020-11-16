@@ -1,4 +1,4 @@
-package services
+package model
 
 import (
 	"encoding/json"
@@ -13,36 +13,36 @@ type Action struct {
 	ResourceName string `json:"resourceName" bson:"resourceName"`
 	Command string `json:"command" bson:"command"`
 }
+
 type IoTAction interface {
-	DelegateAction(e chan error)
+	DelegateAction(con MongoDB) (err error)
 }
 
-func (a Action)DelegateAction (e chan error, con MongoDB) {
-	err := con.CreateAction(a)
-	if err != nil {
-		log.Println("It was not possible to save this action ")
-		e <- err
-		return
-	}
-	log.Println("Action saved successfully!")
+var ActionInstance IoTAction
+
+func (a Action)DelegateAction (con MongoDB) (err error) {
 	device, err := con.GetDeviceByID(a.DeviceName)
 	if err != nil {
-		log.Println("It was not possible find the device's action ")
-		e <- err
+		log.Println("It was not possible find the device ")
 		return
 	}
 	content, err := json.Marshal(a)
 	if err != nil{
 		log.Println("It was not possible to Marshal action ")
-		e <- err
 		return
 
 	}
-	sendAction(device.GatewayUUID, device.UUID, content)
+	err = con.CreateAction(a)
+	if err != nil {
+		log.Println("It was not possible to save this action ")
+		return
+	}
+	log.Println("Action saved successfully!")
+	sendAction(device.GatewayUUID, device.UUID, string(content))
 	return
 }
 
-func sendAction(gatewayID string, receiverID string, content []byte){
+func sendAction(gatewayID string, receiverID string, content string){
 	log.Println("Delivering Message...")
 	log.Println(gatewayID)
 	log.Println(receiverID)

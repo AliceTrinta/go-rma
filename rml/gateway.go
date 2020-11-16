@@ -1,7 +1,7 @@
 package rml
 
 import (
-	"GO-RMA/core/services"
+	"GO-RMA/core/model"
 	"bufio"
 	"fmt"
 	"log"
@@ -10,7 +10,7 @@ import (
 )
 
 func Start() {
-	services.MongoConnect()
+	model.MongoConnect()
 	log.Println("Mongo connected")
 	for{
 		reader := bufio.NewReader(os.Stdin)
@@ -18,7 +18,7 @@ func Start() {
 		text, _ := reader.ReadString('\n')
 		fmt.Println(text)
 		c := make(chan error)
-		go TakeType(text, c)
+		go TakeType(text)
 		var err = <-c
 		if err != nil {
 			log.Println(err)

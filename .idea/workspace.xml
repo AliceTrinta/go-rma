@@ -20,20 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bd12949-0d7d-43c0-bcfa-cfccf2475372" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/model/mongo.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rml/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/action.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/action.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/data.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/data.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/device.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/device.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/model/resource.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/resource.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/repository/action.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/repository/data.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/repository/device.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/repository/mongo.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/repository/mongo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/mongo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/services/action.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/services/data.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/services/device.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/services/mongo.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/services/mongo.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/services/repository.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rml/RMLGatewayStarter.go" beforeDir="false" afterPath="$PROJECT_DIR$/rml/gateway.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rml/RMLGatewayStarter.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/rml/RMLServer.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -187,22 +182,22 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="463" y="139" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1603551629286" />
-    <state width="1323" height="250" key="GridCell.Tab.0.bottom" timestamp="1605557434565">
+    <state width="1323" height="250" key="GridCell.Tab.0.bottom" timestamp="1605557523552">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="250" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1605557434565" />
-    <state width="1323" height="250" key="GridCell.Tab.0.center" timestamp="1605557434564">
+    <state width="1323" height="250" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1605557523552" />
+    <state width="1323" height="250" key="GridCell.Tab.0.center" timestamp="1605557523551">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="250" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1605557434564" />
-    <state width="1323" height="250" key="GridCell.Tab.0.left" timestamp="1605557434564">
+    <state width="1323" height="250" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1605557523551" />
+    <state width="1323" height="250" key="GridCell.Tab.0.left" timestamp="1605557523551">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="250" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1605557434564" />
-    <state width="1323" height="250" key="GridCell.Tab.0.right" timestamp="1605557434564">
+    <state width="1323" height="250" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1605557523551" />
+    <state width="1323" height="250" key="GridCell.Tab.0.right" timestamp="1605557523551">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="250" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1605557434564" />
+    <state width="1323" height="250" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1605557523551" />
     <state width="1323" height="238" key="GridCell.Tab.1.bottom" timestamp="1605294621450">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -219,10 +214,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="1323" height="238" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1605294621450" />
-    <state x="92" y="92" width="1182" height="584" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1603551923900">
+    <state x="92" y="92" width="1182" height="584" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1605557874209">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="92" y="92" width="1182" height="584" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1366.768@0.0.1366.768" timestamp="1603551923900" />
+    <state x="92" y="92" width="1182" height="584" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1366.768@0.0.1366.768" timestamp="1605557874209" />
     <state x="526" y="145" key="refactoring.ChangeSignatureDialog" timestamp="1605029840331">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

@@ -1,4 +1,4 @@
-package services
+package model
 
 import (
 	"gopkg.in/mgo.v2/bson"
@@ -15,18 +15,18 @@ type Data struct {
 }
 
 type IoTData interface {
-	SaveData(e chan error)
+	SaveData (con MongoDB) (err error)
 }
 
-func (d Data)SaveData(e chan error, con MongoDB){
-	err := con.CreateData(d)
+var DataInstance IoTData
+
+func (d Data)SaveData (con MongoDB) (err error){
+	err = con.CreateData(d)
 	if err != nil {
 		log.Println("It was not possible to save data ")
-		e <- err
 		return
 	}
 	log.Println("Message registered Successfully!")
-	e <- err
 	return
 
 }
