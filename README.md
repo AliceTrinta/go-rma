@@ -1,9 +1,9 @@
 # GO-RMA
 > The Go Version of the Resource Maanagement Layer.
 
-[![Generic badge](https://img.shields.io/badge/Version-1.0.0-<COLOR>.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Version-0.0.4-<COLOR>.svg)](https://shields.io/)
 [![made-with-Go](https://img.shields.io/badge/Made%20with-Go-1f425f.svg)](http://golang.org)
-[wiki]: https://godoc.org/github.com/AliceTrinta/GO-RMA
+[![wiki](https://godoc.org/github.com/AliceTrinta/GO-RMA)](https://shields.io/)
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
