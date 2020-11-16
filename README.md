@@ -3,7 +3,7 @@
 
 [![Generic badge](https://img.shields.io/badge/Version-0.0.4-<COLOR>.svg)](https://shields.io/)
 [![made-with-Go](https://img.shields.io/badge/Made%20with-Go-1f425f.svg)](http://golang.org)
-[![wiki](https://godoc.org/github.com/AliceTrinta/GO-RMA)](https://shields.io/)
+[![](https://godoc.org/github.com/nathany/looper?status.svg)](https://godoc.org/github.com/AliceTrinta/GO-RMA)
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
