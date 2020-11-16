@@ -2,106 +2,74 @@ package rml
 
 import (
 	"GO-RMA/core/model"
-	"GO-RMA/core/repository"
+	"GO-RMA/core/services"
 	"encoding/json"
+	"github.com/tidwall/gjson"
 	"log"
 )
 
-var con = repository.MongoDB{}
+var con = services.MongoDB{}
 
-func Read (data string, c chan error){
+func TakeType(input string, c chan error){
 	e := make(chan error)
-	defer close(e)
-	d := []byte(data)
-	var device model.Device
-	err := json.Unmarshal(d, &device)
-	if err != nil{
-		var data model.Data
-		err = json.Unmarshal(d, &data)
-		if err != nil{
-			var action model.Action
-			err = json.Unmarshal(d, &action)
-			if err != nil {
-				log.Println("Invalid Input")
-				c <- err
-			}
-			log.Println("registering an action...")
-			go delegateAction(action, e)
-			c <- <- e
-			return
-		}
-		log.Println("registering a data...")
-		go saveData(data, e)
+	value := gjson.Get(input, "_id")
+	if value.String() == "device"{
+		forDevice(input, e)
 		c <- <- e
 		return
+	} else if value.String() == "data" {
+		forData(input, e)
+		c <- <- e
+		return
+	} else if value.String() == "action" {
+		forAction(input, e)
+		c <- <- e
+		return
+	} else {
+		c <- &model.InvalidJSONInput{}
 	}
+}
+
+func forDevice(device string, e chan error)  {
 	log.Println("registering a device...")
-	go startDevice(device, e)
-	c <- <- e
-	return
-}
-
-func startDevice(device model.Device, e chan error) {
-	_, err := con.GetDeviceByID(device.ID)
-	if err != nil{
-		log.Println("Registering new Device")
-		err := con.CreateDevice(device)
-		if err != nil {
-			log.Println("Device was not registered ")
-			e <- err
-			return
-		}
-		e <- err
-		return
-	}
-	log.Println("This device is already registered")
-	e <- nil
-	return
-}
-
-func saveData(data model.Data, e chan error){
-	err := con.CreateData(data)
+	c := make(chan error)
+	var object services.Device
+	iotObject := []byte(device)
+	err := json.Unmarshal(iotObject, &object)
 	if err != nil {
-		log.Println("It was not possible to save data ")
 		e <- err
 		return
 	}
-	log.Println("Message registered Successfully!")
-	e <- err
-	return
+	object.StartDevice(c, con)
+	e <- <- c
+}
+
+func forData(data string, e chan error)  {
+	log.Println("registering a data...")
+	c := make(chan error)
+	var iotData services.Data
+	dataJSON := []byte(data)
+	err := json.Unmarshal(dataJSON, &iotData)
+	if err != nil {
+		e <- err
+		return
+	}
+	iotData.SaveData(c, con)
+	e <- <- c
 
 }
 
-func delegateAction(action model.Action, e chan error) {
-	err := con.CreateAction(action)
+func forAction(action string, e chan error)  {
+	log.Println("registering an action...")
+	c := make(chan error)
+	var iotAction services.Action
+	actionJSON := []byte(action)
+	err := json.Unmarshal(actionJSON, &iotAction)
 	if err != nil {
-		log.Println("It was not possible to save this action ")
 		e <- err
 		return
 	}
-	log.Println("Action saved successfully!")
-	device, err := con.GetDeviceByID(action.DeviceName)
-	if err != nil {
-		log.Println("It was not possible find the device's action ")
-		e <- err
-		return
-	}
-	content, err := json.Marshal(action)
-	if err != nil{
-		log.Println("It was not possible to Marshal action ")
-		e <- err
-		return
-
-	}
-	sendAction(device.GatewayUUID, device.UUID, content)
-	return
-}
-
-func sendAction(gatewayID string, receiverID string, content []byte){
-	log.Println("Delivering Message...")
-	log.Println(gatewayID)
-	log.Println(receiverID)
-	log.Println(content)
-	return
+	iotAction.DelegateAction(c, con)
+	e <- <- c
 }
 

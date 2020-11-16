@@ -1,4 +1,4 @@
-package repository
+package services
 
 import (
 	"github.com/BurntSushi/toml"
@@ -11,10 +11,10 @@ type MongoDB struct {
 	Database string
 }
 
-var db *mgo.Database
+var Db *mgo.Database
 
 func readMongoConfig() (m *MongoDB) {
-	if _, err := toml.DecodeFile("core/repository/mongo.toml", &m); err != nil {
+	if _, err := toml.DecodeFile("C:\\Users\\ATG20\\go\\src\\GO-RMA\\core\\services\\mongo.toml", &m); err != nil {
 		log.Fatal(err)
 	}
 	return
@@ -26,5 +26,5 @@ func MongoConnect() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	db = session.DB(m.Database)
+	Db = session.DB(m.Database)
 }
