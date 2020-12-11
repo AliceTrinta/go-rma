@@ -1,26 +1,30 @@
 package model
 
 import (
-	"gopkg.in/mgo.v2/bson"
 	"log"
 	"time"
 )
 
+//A Data is an information sent by a resource.
 type Data struct {
-	ID bson.ObjectId `json:"_id" bson:"_id"`
-	Instant time.Time `json:"instant" bson:"instant"`
-	DeviceName string `json:"deviceName" bson:"deviceName"`
+	ID int    			`json:"_id" bson:"_id"`
+	Instant time.Time   `json:"instant" bson:"instant"`
+	DeviceUUID string 	`json:"UUID" bson:"UUID"`
 	ResourceName string `json:"resourceName" bson:"resourceName"`
-	Value string `json:"value" bson:"value"`
+	Value string 		`json:"value" bson:"value"`
 }
 
+//The IoTData Gather all the functions that a data can implement.
 type IoTData interface {
 	SaveData (con MongoDB) (err error)
 }
 
+//Here an instance af an IoTData is created.
 var DataInstance IoTData
 
+//The SaveData function will register the data received through an IoT network in the database.
 func (d Data)SaveData (con MongoDB) (err error){
+	//Creating a data in the database
 	err = con.CreateData(d)
 	if err != nil {
 		log.Println("It was not possible to save data ")

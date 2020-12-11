@@ -5,6 +5,7 @@ import (
 	"testing"
 )
 
+//Testing the StartDevice func.
 func TestFakeDevice_StartDevice(t *testing.T) {
 	var fake FakeDevice
 	con := FakeConnection()

@@ -9,6 +9,8 @@ import (
 	"time"
 )
 
+/* The Start function will start the communication with the IoT
+ network and wait until receive some message*/
 func Start() {
 	model.MongoConnect()
 	log.Println("Mongo connected")
@@ -17,13 +19,11 @@ func Start() {
 		fmt.Print("Enter JSON file content: ")
 		text, _ := reader.ReadString('\n')
 		fmt.Println(text)
-		c := make(chan error)
-		go TakeType(text)
-		var err = <-c
+		//When receiving, the message will be passed to the TakeType func.
+		err := TakeType(text)
 		if err != nil {
 			log.Println(err)
 		}
-		close(c)
 		time.Sleep(2*time.Second)
 	}
 }

@@ -1,5 +1,6 @@
 package model
 
+//A Resource represents a sensor or an actuator of a Device.
 type Resource struct {
 	ID string             `json:"_id" bson:"_id"`
 	Name string           `json:"name" bson:"name"`

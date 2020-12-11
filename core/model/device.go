@@ -1,32 +1,35 @@
 package model
 
 import (
-	"encoding/json"
 	"log"
-	"time"
 )
 
+//The Device corresponds to an IoTObject at the Resource Management Layer (RMA).
 type Device struct {
-	ID string                      `json:"_id" bson:"_id"`
 	UUID string                    `json:"UUID" bson:"UUID"`
 	GatewayUUID string             `json:"gateway_UUID" bson:"gatewayUUID"`
 	Name string                    `json:"name" bson:"name"`
 	Description string             `json:"description" bson:"description"`
-	CycleDelayInMillis json.Number `json:"cycleDelayInMillis" bson:"cycleDelayInMillis"`
+	CycleDelayInMillis string 	   `json:"cycleDelayInMillis" bson:"cycleDelayInMillis"`
 	ResourceList []Resource        `json:"resourceList" bson:"resourceList"`
-	LastUpdate time.Time           `json:"lastUpdate" bson:"lastUpdate"`
+	Status bool           		   `json:"status" bson:"status"`
 }
 
+//The IoTObject Gather all the functions that a Device can implement.
 type IoTObject interface {
 	StartDevice(con MongoDB) (err error)
 }
 
+//Here an instance of an IoTObject is created.
 var DeviceInstance IoTObject
 
+//The StartDevice Function will register a Device in the database.
 func (d Device)StartDevice(con MongoDB) (err error){
-	_, err = con.GetDeviceByID(d.ID)
+	//Verifying if the Device already exist.
+	_, err = con.GetDeviceByUUID(d.UUID)
 	if err != nil{
 		log.Println("Registering new Device")
+		//If does not exist, register a new device in the database.
 		err = con.CreateDevice(d)
 		if err != nil {
 			log.Println("Device was not registered ")

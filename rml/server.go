@@ -7,8 +7,11 @@ import (
 	"log"
 )
 
+//Creating a variable to connect with the database.
 var con = model.MongoDB{}
 
+/*The TakeType function will recognize if the message
+ received must be treated as a Device, a Data or an Action. */
 func TakeType(input string) (err error){
 	value := gjson.Get(input, "_id")
 	if value.String() == "device"{
@@ -22,6 +25,7 @@ func TakeType(input string) (err error){
 	}
 }
 
+//The forDevice function will treat a Device JSON string.
 func forDevice(device string) (err error)  {
 	log.Println("registering a device...")
 	var object model.Device
@@ -34,6 +38,7 @@ func forDevice(device string) (err error)  {
 	return model.DeviceInstance.StartDevice(con)
 }
 
+//The forData function will treat a Data JSON string.
 func forData(data string) (err error)  {
 	log.Println("registering a data...")
 	var d model.Data
@@ -46,6 +51,7 @@ func forData(data string) (err error)  {
 	return model.DataInstance.SaveData(con)
 }
 
+//The forAction function will treat an Action JSON string.
 func forAction(action string) (err error) {
 	log.Println("registering an action...")
 	actionJSON := []byte(action)

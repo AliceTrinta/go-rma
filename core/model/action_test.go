@@ -8,6 +8,7 @@ import (
 	"testing"
 )
 
+//Testing the DelegateAction func.
 func TestAction_DelegateAction(t *testing.T) {
 	var fake FakeAction
 	con := FakeConnection()
@@ -17,6 +18,7 @@ func TestAction_DelegateAction(t *testing.T) {
 	}
 }
 
+//Testing the sendAction func.
 func TestSendAction(t *testing.T) {
 	var buf bytes.Buffer
 	log.SetOutput(&buf)

@@ -6,29 +6,39 @@ import (
 	"log"
 )
 
+//The MongoDB will store the database information address.
 type MongoDB struct {
 	Server string
 	Database string
 }
 
+//The MongoRepository will gather all the functions that a MongoDB type can implement.
 type MongoRepository interface {
-	GetDeviceByID(id string) (Device, error)
+	GetEnvironmentByUUID(UUID string) (Environment, error)
+	CreateEnvironment(env Environment) error
+	GetDeviceByUUID(UUID string) (Device, error)
 	CreateDevice(device Device) error
 	CreateData(data Data) error
 	CreateAction(action Action) error
 }
 
+//The Db variable will establish one or more connections with the cluster of servers defined by the url parameter.
 var Db *mgo.Database
 
-func ReadMongoConfig() (m *MongoDB) {
-	if _, err := toml.DecodeFile("C:\\Users\\ATG20\\go\\src\\GO-RMA\\core\\model\\mongo.toml", &m); err != nil {
+//The ReadMongoConfig function will read the configuration file that contains the database information address.
+func ReadMongoConfig() (m *MongoDB, err error) {
+	if _, err = toml.DecodeFile("C:\\Users\\ATG20\\go\\src\\GO-RMA\\core\\model\\mongo.toml", &m); err != nil {
 		log.Fatal(err)
 	}
 	return
 }
 
+//The MongoConnect function will establish the connection with the database.
 func MongoConnect() {
-	var m = ReadMongoConfig()
+	m, err := ReadMongoConfig()
+	if err != nil {
+		log.Fatal(err)
+	}
 	session, err := mgo.Dial(m.Server)
 	if err != nil {
 		log.Fatal(err)
