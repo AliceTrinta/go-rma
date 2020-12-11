@@ -19,26 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1bd12949-0d7d-43c0-bcfa-cfccf2475372" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/action.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/action.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/action_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/action_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/command.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/command.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/data.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/data.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/data_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/data_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/device.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/device.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/device_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/device_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/error.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/error.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/mock.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/mock.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/mongo.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/mongo.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/mongo_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/mongo_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/repository.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/repository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/repository_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/repository_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/model/resource.go" beforeDir="false" afterPath="$PROJECT_DIR$/core/model/resource.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rml/gateway.go" beforeDir="false" afterPath="$PROJECT_DIR$/rml/gateway.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rml/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/rml/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rml/server_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/rml/server_test.go" afterDir="false" />
-    </list>
+    <list default="true" id="1bd12949-0d7d-43c0-bcfa-cfccf2475372" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
