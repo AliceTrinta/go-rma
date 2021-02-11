@@ -1,9 +1,11 @@
 package model
 
 import (
-	"gopkg.in/mgo.v2"
 	"log"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"gopkg.in/mgo.v2"
 )
 
 //Testing the MongoConnect func.
@@ -13,25 +15,19 @@ func TestMongoConnect(t *testing.T) {
 
 //Testing the ReadMongoConfig func.
 func TestReadMongoConfig(t *testing.T) {
-	m, err:= ReadMongoConfig()
-	if err != nil {
-		log.Fatal(err)
-	}
+	m, err := ReadMongoConfig()
+	assert.Nil(t, err)
 	log.Println(m)
 }
 
 //Testing the Db variable.
-func TestDbVariable(t *testing.T){
+func TestDbVariable(t *testing.T) {
 	m, err := ReadMongoConfig()
-	if err != nil {
-		log.Fatal(err)
-	}
+	assert.Nil(t, err)
 	session, err := mgo.Dial(m.Server)
-	if err != nil {
-		log.Fatal(err)
-	}
+	assert.Nil(t, err)
 	Db = session.DB(m.Database)
 	if Db == nil {
-		log.Fatal("Db variable is empty.")
+		assert.Nil(t, Db)
 	}
 }
