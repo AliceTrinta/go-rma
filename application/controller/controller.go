@@ -1,12 +1,13 @@
 package controller
 
 import (
-	"GoWonder/handler"
-	"GoWonder/route"
 	"net/http"
+
+	"github.com/AliceTrinta/GoWonder/handler"
+	"github.com/AliceTrinta/GoWonder/route"
 )
 
-//Here, at the Begin Function, the routes are configured.
+//Begin Function will configure the routes.
 func Begin() http.Handler {
 
 	routes := []route.Conf{

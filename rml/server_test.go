@@ -1,26 +1,27 @@
 package rml
 
 import (
-	"GO-RMA/core/model"
 	"testing"
+
+	"github.com/AliceTrinta/GO-RMA/core/model"
 )
 
 //Testing the forDevice func.
-func TestForDevice(t *testing.T){
+func TestForDevice(t *testing.T) {
 	model.FakeConnection()
 	model.DeviceInstance = model.FakeDevice{}
 	err := forDevice("{\"UUID\":\"\",\"gatewayUUID\":\"\",\"name\":\"\",\"description\":\"\",\"cycleDelayInMillis\":\"\",\"resourceList\":[],\"status\":false}")
-	if err != nil{
+	if err != nil {
 		t.Fatal(err)
 	}
 }
 
 //Testing the forData func.
-func TestForData(t *testing.T){
+func TestForData(t *testing.T) {
 	model.FakeConnection()
 	model.DataInstance = model.FakeData{}
 	err := forData("{\"_id\":1,\"instant\":\"0001-01-01T00:00:00.000Z\",\"UUID\":\"\",\"resourceName\":\"\",\"value\":\"\"}")
-	if err != nil{
+	if err != nil {
 		t.Fatal(err)
 	}
 }
@@ -34,4 +35,3 @@ func TestForAction(t *testing.T) {
 		t.Fatal(err)
 	}
 }
-

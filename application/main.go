@@ -1,12 +1,13 @@
 package main
 
 import (
-	"GO-RMA/application/controller"
-	"GO-RMA/core/model"
 	"fmt"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/AliceTrinta/GO-RMA/application/controller"
+	"github.com/AliceTrinta/GO-RMA/core/model"
 )
 
 func init() {

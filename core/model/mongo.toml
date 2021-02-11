@@ -1,2 +1,2 @@
-server="localhost:27020"
+server="localhost:27017"
 database="vcdb"

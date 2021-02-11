@@ -15,15 +15,15 @@ type Action struct {
 	Command      string    `json:"command" bson:"command"`
 }
 
-//The IoTAction gather all the functions that an action can implement.
+//IoTAction gather all the functions that an action can implement.
 type IoTAction interface {
 	DelegateAction(con MongoDB) (err error)
 }
 
-//Here an instance of an IoTAction is created.
+//ActionInstance is an instance of IoTAction.
 var ActionInstance IoTAction
 
-//The DelegateAction function will delegate an action to it's respective Device to be executed.
+//DelegateAction function will delegate an action to it's respective Device to be executed.
 func (a Action) DelegateAction(con MongoDB) (err error) {
 	//Getting the UUID from the Device's action.
 	device, err := con.GetDeviceByUUID(a.UUID)
@@ -50,7 +50,7 @@ func (a Action) DelegateAction(con MongoDB) (err error) {
 	return
 }
 
-//The function sendAction will send an action to a Device through and IoT network.
+//sendAction will send an action to a Device through and IoT network.
 func sendAction(gatewayID string, receiverID string, content string) {
 	log.Println("Delivering Message...")
 	log.Println(gatewayID)

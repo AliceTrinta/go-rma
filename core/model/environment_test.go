@@ -1,16 +1,15 @@
 package model
 
 import (
-	"log"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 //Testing the CreateEnvironment func.
-func TestFakeCreateEnvironment(t *testing.T){
+func TestFakeCreateEnvironment(t *testing.T) {
 	var fake FakeEnvironment
 	con := FakeConnection()
 	err := fake.StartEnvironment(con)
-	if err != nil {
-		log.Fatal(err)
-	}
+	assert.Nil(t, err)
 }

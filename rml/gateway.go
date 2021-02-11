@@ -1,20 +1,21 @@
 package rml
 
 import (
-	"GO-RMA/core/model"
 	"bufio"
 	"fmt"
 	"log"
 	"os"
 	"time"
+
+	"github.com/AliceTrinta/GO-RMA/core/model"
 )
 
-/* The Start function will start the communication with the IoT
- network and wait until receive some message*/
+/*Start function will start the communication with the IoT
+network and wait until receive some message*/
 func Start() {
 	model.MongoConnect()
 	log.Println("Mongo connected")
-	for{
+	for {
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Print("Enter JSON file content: ")
 		text, _ := reader.ReadString('\n')
@@ -24,6 +25,6 @@ func Start() {
 		if err != nil {
 			log.Println(err)
 		}
-		time.Sleep(2*time.Second)
+		time.Sleep(2 * time.Second)
 	}
 }

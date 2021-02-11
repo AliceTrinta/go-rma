@@ -1,8 +1,9 @@
 package model
 
 import (
-	"log"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 //Testing the StartDevice func.
@@ -10,7 +11,5 @@ func TestFakeDevice_StartDevice(t *testing.T) {
 	var fake FakeDevice
 	con := FakeConnection()
 	err := fake.StartDevice(con)
-	if err != nil {
-		log.Fatal(err)
-	}
+	assert.Nil(t, err)
 }

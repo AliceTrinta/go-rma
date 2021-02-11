@@ -1,20 +1,21 @@
 package rml
 
 import (
-	"GO-RMA/core/model"
 	"encoding/json"
-	"github.com/tidwall/gjson"
 	"log"
+
+	"github.com/AliceTrinta/GO-RMA/core/model"
+	"github.com/tidwall/gjson"
 )
 
 //Creating a variable to connect with the database.
 var con = model.MongoDB{}
 
-/*The TakeType function will recognize if the message
- received must be treated as a Device, a Data or an Action. */
-func TakeType(input string) (err error){
+/*TakeType function will recognize if the message
+received must be treated as a Device, a Data or an Action. */
+func TakeType(input string) (err error) {
 	value := gjson.Get(input, "_id")
-	if value.String() == "device"{
+	if value.String() == "device" {
 		return forDevice(input)
 	} else if value.String() == "data" {
 		return forData(input)
@@ -26,7 +27,7 @@ func TakeType(input string) (err error){
 }
 
 //The forDevice function will treat a Device JSON string.
-func forDevice(device string) (err error)  {
+func forDevice(device string) (err error) {
 	log.Println("registering a device...")
 	var object model.Device
 	iotObject := []byte(device)
@@ -39,7 +40,7 @@ func forDevice(device string) (err error)  {
 }
 
 //The forData function will treat a Data JSON string.
-func forData(data string) (err error)  {
+func forData(data string) (err error) {
 	log.Println("registering a data...")
 	var d model.Data
 	dataJSON := []byte(data)
@@ -63,4 +64,3 @@ func forAction(action string) (err error) {
 	model.ActionInstance = a
 	return model.ActionInstance.DelegateAction(con)
 }
-

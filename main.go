@@ -1,8 +1,8 @@
 package main
 
 import (
-	"GO-RMA/core/model"
-	"GO-RMA/rml"
+	"github.com/AliceTrinta/GO-RMA/core/model"
+	"github.com/AliceTrinta/GO-RMA/rml"
 )
 
 func main() {
