@@ -11,4 +11,3 @@ func main() {
 	model.ActionInstance = model.Action{}
 	rml.Start()
 }
-

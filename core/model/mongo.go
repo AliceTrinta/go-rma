@@ -1,14 +1,15 @@
 package model
 
 import (
+	"log"
+
 	"github.com/BurntSushi/toml"
 	"gopkg.in/mgo.v2"
-	"log"
 )
 
 //The MongoDB will store the database information address.
 type MongoDB struct {
-	Server string
+	Server   string
 	Database string
 }
 
@@ -16,6 +17,7 @@ type MongoDB struct {
 type MongoRepository interface {
 	GetEnvironmentByUUID(UUID string) (Environment, error)
 	CreateEnvironment(env Environment) error
+	GetAllDevices() ([]Device, error)
 	GetDeviceByUUID(UUID string) (Device, error)
 	CreateDevice(device Device) error
 	CreateData(data Data) error

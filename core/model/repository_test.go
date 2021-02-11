@@ -10,7 +10,7 @@ func TestMongoDB_GetEnvironmentByUUID(t *testing.T) {
 	con := FakeConnection()
 	var UUID = ""
 	_, err := con.GetEnvironmentByUUID(UUID)
-	if err != nil{
+	if err != nil {
 		log.Fatal(err)
 	}
 }
@@ -20,6 +20,15 @@ func TestMongoDB_CreateEnvironment(t *testing.T) {
 	var e Environment
 	con := FakeConnection()
 	err := con.CreateEnvironment(e)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+//Testing the GetAllDevices func.
+func TestMongoDB_GetAllDevices(t *testing.T) {
+	con := FakeConnection()
+	_, err := con.GetAllDevices()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -64,4 +73,3 @@ func TestMongoDB_CreateAction(t *testing.T) {
 		log.Fatal(err)
 	}
 }
-

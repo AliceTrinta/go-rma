@@ -5,13 +5,14 @@ import (
 	"log"
 	"time"
 )
+
 //An Action is an instance of a command that a resource can receive.
 type Action struct {
-	ID int 				`json:"_id" bson:"_id"`
-	Date time.Time 		`json:"date" bson:"date"`
-	UUID string         `json:"UUID" bson:"UUID"`
-	ResourceName string `json:"resourceName" bson:"resourceName"`
-	Command string 		`json:"command" bson:"command"`
+	ID           int       `json:"_id" bson:"_id"`
+	Date         time.Time `json:"date" bson:"date"`
+	UUID         string    `json:"UUID" bson:"UUID"`
+	ResourceName string    `json:"resourceName" bson:"resourceName"`
+	Command      string    `json:"command" bson:"command"`
 }
 
 //The IoTAction gather all the functions that an action can implement.
@@ -23,7 +24,7 @@ type IoTAction interface {
 var ActionInstance IoTAction
 
 //The DelegateAction function will delegate an action to it's respective Device to be executed.
-func (a Action)DelegateAction (con MongoDB) (err error) {
+func (a Action) DelegateAction(con MongoDB) (err error) {
 	//Getting the UUID from the Device's action.
 	device, err := con.GetDeviceByUUID(a.UUID)
 	if err != nil {
@@ -32,7 +33,7 @@ func (a Action)DelegateAction (con MongoDB) (err error) {
 	}
 	//Transforming a model of an action into a JSON string.
 	content, err := json.Marshal(a)
-	if err != nil{
+	if err != nil {
 		log.Println("It was not possible to Marshal action ")
 		return
 
@@ -50,11 +51,10 @@ func (a Action)DelegateAction (con MongoDB) (err error) {
 }
 
 //The function sendAction will send an action to a Device through and IoT network.
-func sendAction(gatewayID string, receiverID string, content string){
+func sendAction(gatewayID string, receiverID string, content string) {
 	log.Println("Delivering Message...")
 	log.Println(gatewayID)
 	log.Println(receiverID)
 	log.Println(content)
 	return
 }
-
