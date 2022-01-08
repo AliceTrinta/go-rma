@@ -6,12 +6,14 @@ import (
 	"log"
 	"os"
 	"time"
+
+	"github.com/AliceTrinta/GO-RMA/entity"
 )
 
 /*Start function will start the communication with the IoT
 network and wait until receive some message*/
 func Start() {
-	model.MongoConnect()
+	entity.MongoConnect()
 	log.Println("Mongo connected")
 	for {
 		reader := bufio.NewReader(os.Stdin)
