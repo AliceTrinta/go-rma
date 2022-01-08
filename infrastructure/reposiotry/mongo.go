@@ -1,8 +1,9 @@
-package entity
+package repository
 
 import (
 	"log"
 
+	"github.com/AliceTrinta/GO-RMA/entity"
 	"github.com/BurntSushi/toml"
 	"gopkg.in/mgo.v2"
 )
@@ -15,13 +16,13 @@ type MongoDB struct {
 
 //MongoRepository will gather all the functions that a MongoDB type can implement.
 type MongoRepository interface {
-	GetEnvironmentByUUID(UUID string) (Environment, error)
-	CreateEnvironment(env Environment) error
-	GetAllDevices() ([]Device, error)
-	GetDeviceByUUID(UUID string) (Device, error)
-	CreateDevice(device Device) error
-	CreateData(data Data) error
-	CreateAction(action Action) error
+	GetEnvironmentByUUID(UUID string) (entity.Environment, error)
+	CreateEnvironment(env entity.Environment) error
+	GetAllDevices() ([]entity.Device, error)
+	GetDeviceByUUID(UUID string) (entity.Device, error)
+	CreateDevice(device entity.Device) error
+	CreateData(data entity.Data) error
+	CreateAction(action entity.Action) error
 }
 
 //Db variable will establish one or more connections with the cluster of servers defined by the url parameter.
@@ -29,7 +30,7 @@ var Db *mgo.Database
 
 //ReadMongoConfig function will read the configuration file that contains the database information address.
 func ReadMongoConfig() (m *MongoDB, err error) {
-	if _, err = toml.DecodeFile("https://github.com/AliceTrinta/GO-RMA/blob/286e426ded75a3ab81cb6a149a3862bd94dfe6c2/core/model/mongo.toml", &m); err != nil {
+	if _, err = toml.DecodeFile("https://github.com/AliceTrinta/GO-RMA/infrastructure/repository/mongo.toml", &m); err != nil {
 		log.Fatal(err)
 	}
 	return

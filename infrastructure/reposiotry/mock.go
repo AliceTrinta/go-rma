@@ -1,4 +1,4 @@
-package entity
+package repository
 
 //This file contains mock objects created for tests.
 

@@ -1,8 +1,9 @@
-package entity
+package repository
 
 import (
 	"testing"
 
+	"github.com/AliceTrinta/GO-RMA/entity"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -16,7 +17,7 @@ func TestMongoDB_GetEnvironmentByUUID(t *testing.T) {
 
 //Testing the CreateEnvironment func.
 func TestMongoDB_CreateEnvironment(t *testing.T) {
-	var e Environment
+	var e entity.Environment
 	con := FakeConnection()
 	err := con.CreateEnvironment(e)
 	assert.Nil(t, err)
@@ -39,7 +40,7 @@ func TestMongoDB_GetDeviceByUUID(t *testing.T) {
 
 //Testing the CreateDevice func.
 func TestMongoDB_CreateDevice(t *testing.T) {
-	var o Device
+	var o entity.Device
 	con := FakeConnection()
 	err := con.CreateDevice(o)
 	assert.Nil(t, err)
@@ -47,7 +48,7 @@ func TestMongoDB_CreateDevice(t *testing.T) {
 
 //Testing the CreateData func.
 func TestMongoDB_CreateData(t *testing.T) {
-	var d Data
+	var d entity.Data
 	con := FakeConnection()
 	err := con.CreateData(d)
 	assert.Nil(t, err)
@@ -55,7 +56,7 @@ func TestMongoDB_CreateData(t *testing.T) {
 
 //Testing the CreateAction func.
 func TestMongoDB_CreateAction(t *testing.T) {
-	var a Action
+	var a entity.Action
 	con := FakeConnection()
 	err := con.CreateAction(a)
 	assert.Nil(t, err)
