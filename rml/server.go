@@ -12,6 +12,18 @@ package rml
 // //Creating a variable to connect with the database.
 // var con = repository.MongoDB{}
 
+// func forDevice(device string) (err error) {
+// 	log.Println("registering a device...")
+// 	var object entity.Device
+// 	iotObject := []byte(device)
+// 	err = json.Unmarshal(iotObject, &object)
+// 	if err != nil {
+// 		return
+// 	}
+// 	entity.DeviceInstance = object
+// 	return entity.DeviceInstance.StartDevice(con)
+// }
+
 // /*TakeType function will recognize if the message
 // received must be treated as a Device, a Data or an Action. */
 // func TakeType(input string) (err error) {
@@ -25,19 +37,6 @@ package rml
 // 	} else {
 // 		return &entity.InvalidJSONInput{}
 // 	}
-// }
-
-// //The forDevice function will treat a Device JSON string.
-// func forDevice(device string) (err error) {
-// 	log.Println("registering a device...")
-// 	var object entity.Device
-// 	iotObject := []byte(device)
-// 	err = json.Unmarshal(iotObject, &object)
-// 	if err != nil {
-// 		return
-// 	}
-// 	entity.DeviceInstance = object
-// 	return entity.DeviceInstance.StartDevice(con)
 // }
 
 // //The forData function will treat a Data JSON string.
