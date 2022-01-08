@@ -1,7 +1,6 @@
 package repository
 
 import (
-	"log"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -15,9 +14,8 @@ func TestMongoConnect(t *testing.T) {
 
 //Testing the ReadMongoConfig func.
 func TestReadMongoConfig(t *testing.T) {
-	m, err := ReadMongoConfig()
+	_, err := ReadMongoConfig()
 	assert.Nil(t, err)
-	log.Println(m)
 }
 
 //Testing the Db variable.
