@@ -14,7 +14,6 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
-* [Release History](#release-history)
 * [Contact](#contact)
 * [Contributing](#contributing)
 
@@ -67,18 +66,6 @@ Example of a device: {"_id":"device","UUID":"8e0dae08-b360-4ace-b214-47b3d0e93f1
 <!-- USAGE -->
 ## Usage
 The RMA is used to organize object on an IoT network, offering a management tool to turn easier deal with object's resources and user's applications.
-
-<!-- RELEASE HISTORY -->
-## Release History
-
-* 0.0.1
-    * First version
-* 0.0.2
-    *  Version after first meeting
-* 0.0.4
-    * Begining first tests
-
-
 
 <!-- CONTACT -->
 ## Contact
