@@ -3,7 +3,6 @@ package rml
 import (
 	"testing"
 
-	"github.com/AliceTrinta/GO-RMA/core/model"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -1,4 +1,4 @@
-package model
+package entity
 
 //InvalidJSONInput indicates that some message received through the IoT network that does not match with a Device, a Data or an Action
 type InvalidJSONInput struct{}

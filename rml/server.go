@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"log"
 
-	"github.com/AliceTrinta/GO-RMA/core/model"
 	"github.com/tidwall/gjson"
 )
 

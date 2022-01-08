@@ -6,8 +6,6 @@ import (
 	"log"
 	"os"
 	"time"
-
-	"github.com/AliceTrinta/GO-RMA/core/model"
 )
 
 /*Start function will start the communication with the IoT
