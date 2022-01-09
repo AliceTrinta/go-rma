@@ -5,6 +5,7 @@ import (
 	"log"
 	"time"
 
+	"github.com/AliceTrinta/GO-RMA/config"
 	"github.com/AliceTrinta/GO-RMA/entity"
 	"github.com/AliceTrinta/GO-RMA/infrastructure/repository"
 	"github.com/AliceTrinta/GO-RMA/usecase/Device"
@@ -18,9 +19,9 @@ func RmlDevice() error {
 		log.Fatal(err)
 	}
 	sub, err := nc.SubscribeSync("connect")
-		if err != nil {
-			log.Fatal(err)
-		}
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	for {
 		msg, err := sub.NextMsg(10 * time.Second)
@@ -35,13 +36,16 @@ func RmlDevice() error {
 }
 
 func StartDevice(device []byte) (string, error) {
-	db := repository.MongoConnect()
+	db, err := config.MongoConnect()
+	if err != nil {
+		return "", err
+	}
 	defer db.Session.Close()
 	repo := repository.NewDeviceMongo(db)
 	service := Device.NewService(repo)
 
 	var object entity.Device
-	err := json.Unmarshal(device, &object)
+	err = json.Unmarshal(device, &object)
 	if err != nil {
 		return "", err
 	}

@@ -5,6 +5,7 @@ import (
 	"log"
 	"time"
 
+	"github.com/AliceTrinta/GO-RMA/config"
 	"github.com/AliceTrinta/GO-RMA/entity"
 	"github.com/AliceTrinta/GO-RMA/infrastructure/repository"
 	"github.com/AliceTrinta/GO-RMA/usecase/Data"
@@ -34,14 +35,17 @@ func RmlData() {
 }
 
 func SaveData(data []byte) error {
-	db := repository.MongoConnect()
+	db, err := config.MongoConnect()
+	if err != nil {
+		return err
+	}
 	defer db.Session.Close()
 	repo := repository.NewDataMongo(db)
 	service := Data.NewService(repo)
 
 	var d entity.Data
 	log.Println(string(data))
-	err := json.Unmarshal(data, &d)
+	err = json.Unmarshal(data, &d)
 	if err != nil {
 		return err
 	}

@@ -3,12 +3,17 @@ package repository
 import (
 	"testing"
 
+	"github.com/AliceTrinta/GO-RMA/config"
 	"github.com/AliceTrinta/GO-RMA/entity"
 	"github.com/stretchr/testify/assert"
 )
 
 func FakeActionMongo() (con ActionMongo) {
-	con.db = MongoConnect()
+	db, err := config.MongoConnect()
+	con.db = db
+	if err != nil {
+		return
+	}
 	return con
 }
 
