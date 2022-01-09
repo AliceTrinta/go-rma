@@ -1,13 +1,17 @@
 package main
 
 import (
-	"github.com/AliceTrinta/GO-RMA/entity"
-	"github.com/AliceTrinta/GO-RMA/rml"
+	"time"
+
+	"github.com/AliceTrinta/GO-RMA/controllers"
 )
 
 func main() {
-	entity.DeviceInstance = entity.Device{}
-	entity.DataInstance = entity.Data{}
-	entity.ActionInstance = entity.Action{}
-	rml.Start()
+
+	go controllers.RmlDevice()
+	go controllers.RmlData()
+
+	for {
+		time.Sleep(10*time.Minute)
+	}
 }
