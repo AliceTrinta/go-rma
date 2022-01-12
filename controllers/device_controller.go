@@ -14,7 +14,7 @@ import (
 )
 
 func RmlDevice() error {
-	nc, err := nats.Connect("nats://demo.nats.io:4222")
+	nc, err := nats.Connect("0.0.0.0:4222")
 	if err != nil {
 		log.Fatal(err)
 	}
