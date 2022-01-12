@@ -4,7 +4,7 @@ import "github.com/AliceTrinta/GO-RMA/entity"
 
 //Reader interface
 type Reader interface {
-	//In progress...
+	GetAll() ([]entity.Data, error)
 }
 
 //Writer interface
@@ -21,4 +21,5 @@ type Repository interface {
 //UseCase interface
 type UseCase interface {
 	CreateData(data entity.Data) error
+	GetAllData() ([]entity.Data, error)
 }

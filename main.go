@@ -11,6 +11,7 @@ import (
 	"github.com/AliceTrinta/GO-RMA/config"
 	"github.com/AliceTrinta/GO-RMA/controllers"
 	"github.com/AliceTrinta/GO-RMA/infrastructure/repository"
+	"github.com/AliceTrinta/GO-RMA/usecase/Data"
 	"github.com/AliceTrinta/GO-RMA/usecase/Device"
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/context"
@@ -27,8 +28,12 @@ func main() {
 		log.Fatal(err.Error())
 	}
 	defer db.Session.Close()
-	repo := repository.NewDeviceMongo(db)
-	service := Device.NewService(repo)
+
+	repoDevice := repository.NewDeviceMongo(db)
+	serviceDevice := Device.NewService(repoDevice)
+
+	repoData := repository.NewDataMongo(db)
+	serviceData := Data.NewService(repoData)
 
 	r := mux.NewRouter()
 
@@ -36,7 +41,8 @@ func main() {
 		negroni.NewLogger(),
 	)
 
-	handler.MakeDeviceHandlers(r, *n, service)
+	handler.MakeDeviceHandlers(r, *n, serviceDevice)
+	handler.MakeDataHandlers(r, *n, serviceData)
 
 	http.Handle("/", r)
 	r.HandleFunc("/ping", func(w http.ResponseWriter, r *http.Request) {

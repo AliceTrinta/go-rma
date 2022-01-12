@@ -17,3 +17,7 @@ func NewService(r Repository) *Service {
 func (s *Service) CreateData(data entity.Data) error {
 	return s.repo.Create(data)
 }
+
+func (s *Service) GetAllData() ([]entity.Data, error) {
+	return s.repo.GetAll()
+}

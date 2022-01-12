@@ -24,3 +24,9 @@ func TestMongoDB_CreateData(t *testing.T) {
 	err := con.Create(d)
 	assert.Nil(t, err)
 }
+
+func TestMongoDB_GetAllData(t *testing.T) {
+	con := FakeDataMongo()
+	_, err := con.GetAll()
+	assert.Nil(t, err)
+}
